@@ -39,6 +39,12 @@ const menuTemplate = [
         }
       },
       {
+        label: 'Clear Todo List',
+        click() {
+          mainWindow.webContents.send('todo:clear');
+        }
+      },
+      {
         label: 'Edit',
         submenu: [
           { label: 'Copy', accelerator: 'Command+C', selector: 'copy:'}
@@ -58,6 +64,7 @@ if (process.env.NODE_ENV !== 'production') {
   menuTemplate.push({
     label: 'View',
     submenu: [
+      { role: 'reload' },
       {
         label: 'Toggle Developer Tools',
         accelerator: 'Command+J',
